@@ -24,6 +24,11 @@
       "vehicle": "SpaceX",
       "ownerName": "Elon Musk",
       "details": "some detail Elon"
+    },
+    {
+      "vehicle": "Bts",
+      "ownerName": "Jack",
+      "details": "some detail Jack"
     }
   ]
 }

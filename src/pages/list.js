@@ -8,7 +8,7 @@ const List = ({ owners }) => {
         <div key={i}>
           <Link
             as={`/${owner.vehicle}/${owner.ownerName}`}
-            href="/[vehicle]/[person]"
+            href="/[vehicles]/[person]"
           >
             <a>
               Navigate to {owner.ownerName}&apos;s {owner.vehicle}
