@@ -7,8 +7,9 @@ const getAllVehicles = async (req: NextApiRequest, res: NextApiResponse) => {
     const vehicles = await db.all('select * from vehicle')
 
     res.json({ vehicles })
+  } else {
+    res.status(500).json({ message: 'sorry we only accept GET requests' })
   }
-  res.status(500).json({ message: 'sorry we only accept GET requests' })
 }
 
 export default getAllVehicles

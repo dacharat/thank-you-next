@@ -11,8 +11,9 @@ const getVehiclesByPersonId = async (
       req.query.id,
     ])
     res.json({ vehicles })
+  } else {
+    res.status(500).json({ message: 'sorry we only accept GET requests' })
   }
-  res.status(500).json({ message: 'sorry we only accept GET requests' })
 }
 
 export default getVehiclesByPersonId

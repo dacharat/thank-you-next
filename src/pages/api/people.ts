@@ -7,8 +7,9 @@ const getPeople = async (req: NextApiRequest, res: NextApiResponse) => {
     const people = await db.all('select * from person')
 
     res.json({ people })
+  } else {
+    res.status(500).json({ message: 'sorry we only accept GET requests' })
   }
-  res.status(500).json({ message: 'sorry we only accept GET requests' })
 }
 
 export default getPeople

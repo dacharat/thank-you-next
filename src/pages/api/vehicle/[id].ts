@@ -8,8 +8,9 @@ const getVehicle = async (req: NextApiRequest, res: NextApiResponse) => {
       req.query.id,
     ])
     res.json({ vehicle })
+  } else {
+    res.status(500).json({ message: 'sorry we only accept GET requests' })
   }
-  res.status(500).json({ message: 'sorry we only accept GET requests' })
 }
 
 export default getVehicle

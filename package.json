@@ -10,6 +10,7 @@
     "mock-server-delay": "json-server --watch ./db.json -p 4001 -d 3000"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.14",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.4.0",
     "react": "16.13.1",
