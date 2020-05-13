@@ -19,8 +19,6 @@
   "plugins": ["react"],
   "rules": {
     "quotes": ["error", "single"],
-    "semi": ["error", "never"],
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off"
+    "semi": ["error", "never"]
   }
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 
-import { VehiclePerson } from '../api/type'
+import { VehiclePerson } from '../interface/type'
 
 interface Props {
   owners?: VehiclePerson[]
