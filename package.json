@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "mock-server": "json-server --watch ./db.json -p 4001 -d 3000"
+    "mock-server": "json-server --watch ./db.json -p 4001",
+    "mock-server-delay": "json-server --watch ./db.json -p 4001 -d 3000"
   },
   "dependencies": {
     "isomorphic-unfetch": "^3.0.0",
@@ -15,11 +16,17 @@
     "react-dom": "16.13.1"
   },
   "devDependencies": {
+    "@types/node": "^14.0.1",
+    "@types/react": "^16.9.35",
     "eslint": "^7.0.0",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.5",
     "json-server": "^0.16.1",
     "lint-staged": "^10.2.2",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "tslint": "^6.1.2",
+    "tslint-react": "^5.0.0",
+    "typescript": "^3.9.2",
+    "typescript-tslint-plugin": "^0.5.5"
   }
 }

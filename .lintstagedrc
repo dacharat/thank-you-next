@@ -2,5 +2,9 @@
   "*.{js,jsx}": [
     "prettier --write",
     "eslint --fix"
+  ],
+  "*.{ts,tsx}": [
+    "prettier --write",
+    "tslint --fix",
   ]
 }
