@@ -1,4 +1,4 @@
-import sqlite from 'sqlite'
+const sqlite = require('sqlite')
 
 const setup = async () => {
   const db = await sqlite.open('./mydb.sqlite')
