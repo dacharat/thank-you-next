@@ -8,6 +8,8 @@ import TableRow from '@material-ui/core/TableRow'
 import fetch from 'isomorphic-unfetch'
 
 import { VehiclesResponse } from '../interface/type'
+import { withAuth } from '../hoc/withAuth'
+import { NextPageContext } from 'next'
 
 const Vehicles = ({ vehicles }: VehiclesResponse) => {
   return (
@@ -38,18 +40,20 @@ const Vehicles = ({ vehicles }: VehiclesResponse) => {
   )
 }
 
-// Vehicles.getInitialProps = async () => {
+Vehicles.getInitialProps = async (ctx: NextPageContext) => {
+  const vehicles: VehiclesResponse = await withAuth(
+    'http://localhost:3000/api/vehicles',
+    ctx,
+  )
+
+  return { vehicles }
+}
+
+// export const getStaticProps = async () => {
 //   const response = await fetch('http://localhost:3000/api/vehicles')
 //   const vehicles: VehiclesResponse = await response.json()
 
-//   return { vehicles }
+//   return { props: { vehicles } }
 // }
-
-export const getStaticProps = async () => {
-  const response = await fetch('http://localhost:3000/api/vehicles')
-  const vehicles: VehiclesResponse = await response.json()
-
-  return { props: { vehicles } }
-}
 
 export default Vehicles

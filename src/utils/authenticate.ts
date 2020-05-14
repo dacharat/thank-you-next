@@ -7,10 +7,14 @@ export const authenticated = (fn: NextApiHandler) => async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
-  verify(req.headers.authorization!, secret, async (err, decoded) => {
-    if (!err && decoded) {
-      return await fn(req, res)
-    }
-    res.status(401).send({ message: 'Sorry you are not authenticated' })
+  return new Promise((resolve, reject) => {
+    verify(req.cookies.auth!, secret, async (err, decoded) => {
+      if (!err && decoded) {
+        await fn(req, res)
+        return resolve()
+      }
+      res.status(401).send({ message: 'Sorry you are not authenticated' })
+      return reject()
+    })
   })
 }

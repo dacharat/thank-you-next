@@ -3,6 +3,7 @@ import sqlite from 'sqlite'
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { secret } from '../../utils/authenticate'
+import { serialize } from 'cookie'
 
 const login = async (req: NextApiRequest, res: NextApiResponse) => {
   const db = await sqlite.open('./mydb.sqlite')
@@ -16,7 +17,18 @@ const login = async (req: NextApiRequest, res: NextApiResponse) => {
       if (!err && result) {
         const claims = { sub: person.id, myPersonEmail: person.email }
         const jwt = sign(claims, secret, { expiresIn: '1h' })
-        res.json({ authToken: jwt })
+
+        res.setHeader(
+          'Set-Cookie',
+          serialize('auth', jwt, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV !== 'development',
+            sameSite: 'strict',
+            maxAge: 3600,
+            path: '/',
+          }),
+        )
+        res.json({ message: 'Welcome back to the website!' })
       } else {
         res.json({ message: 'Oops, something went wrong!' })
       }
