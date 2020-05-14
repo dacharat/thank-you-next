@@ -36,6 +36,11 @@ import theme from '../theme'
 //   }
 // }
 
+// export const reportWebVitals = (metric: any) => {
+//   // tslint:disable-next-line: no-console
+//   console.log(metric)
+// }
+
 export default ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')

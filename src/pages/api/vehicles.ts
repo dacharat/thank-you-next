@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import sqlite from 'sqlite'
+import { authenticated } from '../../utils/authenticate'
 
 const getAllVehicles = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
@@ -12,4 +13,4 @@ const getAllVehicles = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default getAllVehicles
+export default authenticated(getAllVehicles)

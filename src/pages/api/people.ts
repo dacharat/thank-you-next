@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import sqlite from 'sqlite'
+import { authenticated } from '../../utils/authenticate'
 
 const getPeople = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     const db = await sqlite.open('./mydb.sqlite')
-    const people = await db.all('select * from person')
+    const people = await db.all('select id, email, name from person')
 
     res.json({ people })
   } else {
@@ -12,4 +13,4 @@ const getPeople = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default getPeople
+export default authenticated(getPeople)
