@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import sqlite from 'sqlite'
+import { connectDB } from '../../../utils/database'
 
 const getVehicle = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
-    const db = await sqlite.open('./mydb.sqlite')
+    const db = await connectDB()
     const vehicle = await db.get('select * from vehicle where id = ?', [
       req.query.id,
     ])

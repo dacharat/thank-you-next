@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import sqlite from 'sqlite'
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { secret } from '../../utils/authenticate'
 import { serialize } from 'cookie'
+import { connectDB } from '../../utils/database'
 
 const login = async (req: NextApiRequest, res: NextApiResponse) => {
-  const db = await sqlite.open('./mydb.sqlite')
+  const db = await connectDB()
 
   if (req.method === 'POST') {
     const person = await db.get('select * from person where email = ?', [

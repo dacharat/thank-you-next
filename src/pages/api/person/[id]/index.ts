@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import sqlite from 'sqlite'
+import { connectDB } from '../../../../utils/database'
 
 const getPersonById = async (req: NextApiRequest, res: NextApiResponse) => {
-  const db = await sqlite.open('./mydb.sqlite')
+  const db = await connectDB()
 
   if (req.method === 'PUT') {
     const statement = await db.prepare(
@@ -13,7 +13,7 @@ const getPersonById = async (req: NextApiRequest, res: NextApiResponse) => {
       req.body.email,
       req.query.id,
     )
-    result.finalize()
+    await result.stmt.finalize()
   }
 
   const person = await db.get('select * from person where id = ?', [

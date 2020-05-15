@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { NextPageContext } from 'next'
 import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch'
-import { VehiclePerson } from '../../interface/type'
+import { VehiclePerson } from '../../../interface/type'
 
 interface Props {
   ownerInfo?: VehiclePerson[]
@@ -20,7 +20,7 @@ const Person = ({ ownerInfo }: Props) => {
   const [info, setInfo] = useState(ownerInfo)
 
   useEffect(() => {
-    if (ownerInfo?.length == 0) {
+    if (ownerInfo?.length === 0) {
       console.log('Failed on getInitialProps')
       loadData()
     }

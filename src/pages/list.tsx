@@ -13,8 +13,8 @@ const List = ({ owners }: Props) => {
       {owners?.map((owner, i) => (
         <div key={i}>
           <Link
-            as={`/${owner.vehicle}/${owner.ownerName}`}
-            href="/[vehicles]/[person]"
+            as={`/eiei/${owner.vehicle}/${owner.ownerName}`}
+            href="/eiei/[vehicles]/[person]"
           >
             <a>
               Navigate to {owner.ownerName}&apos;s {owner.vehicle}
