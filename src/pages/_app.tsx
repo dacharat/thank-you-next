@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { ThemeProvider } from '@material-ui/core/styles'
 import theme from '../theme'
+import AppBar from '@material-ui/core/AppBar'
+import Box from '@material-ui/core/Box'
+import Container from '@material-ui/core/Container'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import IconButton from '@material-ui/core/IconButton'
+import { ThemeProvider } from '@material-ui/core/styles'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import MenuIcon from '@material-ui/icons/Menu'
 
 // export default class MyApp extends App {
 //   componentDidMount() {
@@ -58,10 +65,22 @@ export default ({ Component, pageProps }: AppProps) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
+      <AppBar position="fixed">
+        <Toolbar variant="dense">
+          <IconButton edge="start" color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6">Microphone Shop</Typography>
+        </Toolbar>
+      </AppBar>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <Container>
+          <Box marginTop={8}>
+            <Component {...pageProps} />
+          </Box>
+        </Container>
       </ThemeProvider>
     </>
   )

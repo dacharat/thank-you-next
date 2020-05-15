@@ -19,6 +19,7 @@
   "plugins": ["react"],
   "rules": {
     "quotes": ["error", "single"],
-    "semi": ["error", "never"]
+    "semi": ["error", "never"],
+    "jsx-boolean-value": false
   }
 }

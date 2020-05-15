@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import fetch from 'isomorphic-unfetch'
 
-import { VehiclesResponse } from '../interface/type'
+import { VehiclesResponse } from '../interface/vehicles'
 import { withAuth } from '../hoc/withAuth'
 import { NextPageContext } from 'next'
 

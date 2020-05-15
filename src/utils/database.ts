@@ -7,3 +7,10 @@ export const connectDB = async () => {
     driver: Database,
   })
 }
+
+export const connectMicrophoneDB = async () => {
+  return open({
+    filename: './microphones.sqlite',
+    driver: Database,
+  })
+}
