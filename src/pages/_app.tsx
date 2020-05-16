@@ -11,6 +11,9 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import MenuIcon from '@material-ui/icons/Menu'
+import Router from 'next/router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 // export default class MyApp extends App {
 //   componentDidMount() {
@@ -48,7 +51,21 @@ import MenuIcon from '@material-ui/icons/Menu'
 //   console.log(metric)
 // }
 
-export default ({ Component, pageProps }: AppProps) => {
+NProgress.configure({ showSpinner: false, trickleSpeed: 300 })
+
+Router.events.on('routeChangeStart', () => {
+  NProgress.start()
+})
+
+Router.events.on('routeChangeComplete', () => {
+  NProgress.done()
+})
+
+Router.events.on('routeChangeError', () => {
+  NProgress.done()
+})
+
+const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
@@ -65,7 +82,7 @@ export default ({ Component, pageProps }: AppProps) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <AppBar position="fixed">
+      <AppBar position="relative" color="transparent">
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
@@ -85,3 +102,5 @@ export default ({ Component, pageProps }: AppProps) => {
     </>
   )
 }
+
+export default App
